@@ -1,20 +1,31 @@
 import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
-import { TextInput, Text, Button } from 'react-native-paper';
-import { COLORS } from '@/constants';
+import { TextInput, Text } from 'react-native-paper';
+import Button from '@/components/button/Button';
 
 export default function Login() {
   const handleLogin = () => {
     router.push({ pathname: '/(app)' });
   };
+
   return (
     <View style={styles.container}>
-      <Text variant="headlineSmall">Login</Text>
-      <TextInput style={styles.input} placeholder="Email" />
-      <TextInput style={styles.input} placeholder="Password" />
+      <Text style={styles.title} variant="headlineSmall">
+        WalletManager
+      </Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry={true}
+        autoCapitalize="none"
+      />
       <Button
-        style={styles.btnContainer}
-        labelStyle={styles.btnLabel}
+        containerStyle={styles.btnContainerStyle}
         onPress={() => handleLogin()}
       >
         Iniciar sesión
@@ -24,19 +35,19 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  btnContainer: {
-    backgroundColor: COLORS.primary,
-  },
-  btnLabel: {
-    color: COLORS.ligth,
+  btnContainerStyle: {
+    marginTop: 15,
   },
   container: {
-    backgroundColor: '#fff',
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 15,
   },
   input: {
     marginVertical: 10,
+  },
+  title: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
